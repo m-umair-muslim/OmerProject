@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "722294713597",
+    "firebase_url": "https://arsfirebaseproject-f638b.firebaseio.com",
+    "project_id": "arsfirebaseproject-f638b",
+    "storage_bucket": "arsfirebaseproject-f638b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722294713597:android:bc6ecc83941ce570a4a294",
+        "android_client_info": {
+          "package_name": "com.comsats.ars"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722294713597-t9lso36p6jeeprnom7et5oav8j3d0ta9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.comsats.ars",
+            "certificate_hash": "e0cc6ed3f60a5524b6bca5db1cf034c714667c3b"
+          }
+        },
+        {
+          "client_id": "722294713597-8ejojfr36vuttjgfv0h7r53nlo600rbe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFqbmxYQuSTil6rFyuhVdjaaIavhCNieM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722294713597-8ejojfr36vuttjgfv0h7r53nlo600rbe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
