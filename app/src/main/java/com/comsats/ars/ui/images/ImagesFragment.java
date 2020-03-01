@@ -5,41 +5,43 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.comsats.ars.R;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.comsats.ars.adapter.ImageListAdapter;
+
+import java.util.List;
 
 public class ImagesFragment extends Fragment {
 
     private ImagesViewModel galleryViewModel;
-    private ImageView mImageView;
+    private RecyclerView mRecyclerView;
+    private ImageListAdapter mAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel = new ViewModelProvider(this).get(ImagesViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_images, container, false);
-        mImageView = root.findViewById(R.id.img);
+        mRecyclerView = root.findViewById(R.id.gallery_recycler_view);
 
-        galleryViewModel.getImageUri().observe(getViewLifecycleOwner(), new Observer<Uri>() {
+        RecyclerView.LayoutManager manager = new GridLayoutManager(getActivity(), 2);
+        mRecyclerView.setLayoutManager(manager);
+        mAdapter = new ImageListAdapter(getActivity());
+        mRecyclerView.setAdapter(mAdapter);
+
+        galleryViewModel.getImageUri().observe(getViewLifecycleOwner(), new Observer<List<Uri>>() {
             @Override
-            public void onChanged(Uri uri) {
-                Glide.with(ImagesFragment.this)
-                        .load(uri)
-                        .into(mImageView);
+            public void onChanged(List<Uri> uris) {
+                mAdapter.updateList(uris);
             }
         });
-
         return root;
 
     }
