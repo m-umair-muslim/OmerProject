@@ -1,4 +1,4 @@
-package com.comsats.ars;
+package com.comsats.ars.data;
 
 public class User {
 

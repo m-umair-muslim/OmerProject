@@ -2,7 +2,6 @@ package com.comsats.ars;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.comsats.ars.utils.AlertUtil;
+import com.comsats.ars.utils.AppSettings;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -65,9 +65,9 @@ public class LoginActivity extends AppCompatActivity {
                                 if (snapshot.exists()) {
                                     String dbPassword = snapshot.getString("password");
                                     if (Userpass.equals(dbPassword)) {
-                                        SharedPreferences pref = LoginActivity.this.getSharedPreferences(MainActivity.PREF_NAME, MODE_PRIVATE);
-                                        pref.edit().putBoolean(MainActivity.PREF_IS_LOGIN, true).apply();
-
+                                        AppSettings settings = new AppSettings(LoginActivity.this);
+                                        settings.setIsLogin(true);
+                                        settings.setLoginUsername(Username);
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(intent);
                                         finish();

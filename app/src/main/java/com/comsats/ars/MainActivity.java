@@ -1,7 +1,6 @@
 package com.comsats.ars;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,12 +10,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.comsats.ars.utils.AppSettings;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final String PREF_NAME = "MainPref";
-    public static final String PREF_IS_LOGIN = "IsLogin";
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -25,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences sharedPreferences = this.getSharedPreferences(PREF_NAME, MODE_PRIVATE); // Use this shared preference to save values in a file.
-        boolean isLogin = sharedPreferences.getBoolean(PREF_IS_LOGIN, false);
+        boolean isLogin = new AppSettings(this).isLogin();
         if (!isLogin) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
