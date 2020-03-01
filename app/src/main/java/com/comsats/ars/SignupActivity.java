@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,14 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.comsats.ars.utils.AlertUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -83,7 +80,7 @@ public class SignupActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot snapshot = task.getResult();
                                 if (snapshot.exists()) {
-                                    AlertUtil.showDialog(SignupActivity.this,"User exists","Please try any other username.");
+                                    AlertUtil.showDialog(SignupActivity.this, "User exists", "Please try any other username.");
                                 } else {
                                     FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
                                     CollectionReference reference = mFirestore.collection("users");

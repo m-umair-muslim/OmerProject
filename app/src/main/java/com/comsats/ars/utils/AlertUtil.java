@@ -1,4 +1,4 @@
-package com.comsats.ars;
+package com.comsats.ars.utils;
 
 import android.content.Context;
 import android.content.DialogInterface;

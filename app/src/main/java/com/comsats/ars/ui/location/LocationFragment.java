@@ -73,10 +73,10 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
             case R.id.hybrid_map:
                 mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                 return true;
-             default:
-                 return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        }
+    }
 
 }

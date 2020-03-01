@@ -1,15 +1,15 @@
 package com.comsats.ars;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -27,12 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(PREF_NAME, MODE_PRIVATE); // Use this shared preference to save values in a file.
         boolean isLogin = sharedPreferences.getBoolean(PREF_IS_LOGIN, false);
-        if(!isLogin) {
+        if (!isLogin) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
-        }
-        else {
+        } else {
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
